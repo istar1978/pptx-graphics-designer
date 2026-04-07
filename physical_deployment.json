@@ -1,0 +1,124 @@
+{
+  "title": "物理环境部署图",
+  "description": "参考图风格的网络拓扑部署图",
+  "zones": [
+    {
+      "id": "internet_zone",
+      "type": "internet",
+      "title": "互联网接入区",
+      "x": 4.5,
+      "y": 0.8,
+      "width": 4.0,
+      "height": 2.2
+    },
+    {
+      "id": "core_zone",
+      "type": "core",
+      "title": "核心交换区",
+      "x": 4.5,
+      "y": 3.2,
+      "width": 4.0,
+      "height": 1.5
+    },
+    {
+      "id": "office_zone",
+      "type": "office",
+      "title": "办公运维区",
+      "x": 4.5,
+      "y": 4.9,
+      "width": 4.0,
+      "height": 2.4
+    },
+    {
+      "id": "dmz_zone",
+      "type": "dmz",
+      "title": "DMZ 区",
+      "x": 9.2,
+      "y": 1.5,
+      "width": 4.0,
+      "height": 4.5
+    },
+    {
+      "id": "security_zone",
+      "type": "security",
+      "title": "安全管理中心",
+      "x": 0.2,
+      "y": 2.5,
+      "width": 4.0,
+      "height": 3.0
+    }
+  ],
+  "devices": [
+    {"id": "internet", "type": "internet", "x": 6.2, "y": 1.0, "width": 0.7, "height": 0.7, "label": "Internet"},
+    {"id": "firewall1", "type": "firewall", "x": 5.0, "y": 2.0, "width": 0.6, "height": 0.6, "label": "边界防火墙"},
+    {"id": "firewall2", "type": "firewall", "x": 7.4, "y": 2.0, "width": 0.6, "height": 0.6, "label": "边界防火墙"},
+    {"id": "core_switch1", "type": "switch", "x": 5.2, "y": 3.6, "width": 0.7, "height": 0.5, "label": "核心交换机"},
+    {"id": "core_switch2", "type": "switch", "x": 7.0, "y": 3.6, "width": 0.7, "height": 0.5, "label": "核心交换机"},
+    {"id": "access_switch", "type": "switch", "x": 6.2, "y": 5.3, "width": 0.7, "height": 0.5, "label": "接入交换机"},
+    
+    {"id": "pc_0", "type": "pc", "x": 4.8, "y": 6.2, "width": 0.5, "height": 0.4, "label": "终端"},
+    {"id": "pc_1", "type": "pc", "x": 5.5, "y": 6.2, "width": 0.5, "height": 0.4, "label": "终端"},
+    {"id": "pc_2", "type": "pc", "x": 6.2, "y": 6.2, "width": 0.5, "height": 0.4, "label": "终端"},
+    {"id": "pc_3", "type": "pc", "x": 6.9, "y": 6.2, "width": 0.5, "height": 0.4, "label": "终端"},
+    {"id": "pc_4", "type": "pc", "x": 7.6, "y": 6.2, "width": 0.5, "height": 0.4, "label": "终端"},
+    
+    {"id": "dmz_firewall", "type": "firewall", "x": 8.5, "y": 3.5, "width": 0.6, "height": 0.6, "label": "边界防火墙"},
+    {"id": "web_firewall", "type": "firewall", "x": 9.3, "y": 3.5, "width": 0.6, "height": 0.6, "label": "WEB 应用防火墙"},
+    {"id": "dmz_switch", "type": "switch", "x": 10.2, "y": 3.5, "width": 0.7, "height": 0.5, "label": "接入交换机"},
+    
+    {"id": "app_server1", "type": "server", "x": 10.0, "y": 1.8, "width": 0.5, "height": 0.35, "label": "应用服务器区"},
+    {"id": "app_server2", "type": "server", "x": 10.7, "y": 1.8, "width": 0.5, "height": 0.35, "label": "应用服务器"},
+    {"id": "app_server3", "type": "server", "x": 11.4, "y": 1.8, "width": 0.5, "height": 0.35, "label": "应用服务器"},
+    
+    {"id": "db_server1", "type": "server", "x": 10.0, "y": 2.7, "width": 0.5, "height": 0.35, "label": "数据库储存服务器区"},
+    {"id": "db_server2", "type": "server", "x": 10.7, "y": 2.7, "width": 0.5, "height": 0.35, "label": "数据库服务器"},
+    {"id": "db_server3", "type": "server", "x": 11.4, "y": 2.7, "width": 0.5, "height": 0.35, "label": "数据库服务器"},
+    
+    {"id": "public_server1", "type": "server", "x": 10.0, "y": 4.8, "width": 0.5, "height": 0.35, "label": "公共服务器区"},
+    {"id": "public_server2", "type": "server", "x": 10.7, "y": 4.8, "width": 0.5, "height": 0.35, "label": "公共服务器"},
+    {"id": "public_server3", "type": "server", "x": 11.4, "y": 4.8, "width": 0.5, "height": 0.35, "label": "公共服务器"},
+    
+    {"id": "sec_switch", "type": "switch", "x": 3.0, "y": 3.5, "width": 0.7, "height": 0.5, "label": "接入交换机"},
+    {"id": "sec_firewall", "type": "firewall", "x": 3.9, "y": 3.5, "width": 0.6, "height": 0.6, "label": "边界防火墙"},
+    
+    {"id": "log_audit", "type": "server", "x": 1.0, "y": 2.8, "width": 0.6, "height": 0.4, "label": "日志审计系统"},
+    {"id": "db_audit", "type": "server", "x": 1.0, "y": 3.4, "width": 0.6, "height": 0.4, "label": "数据库审计系统"},
+    {"id": "ops_audit", "type": "server", "x": 1.0, "y": 4.0, "width": 0.6, "height": 0.4, "label": "运维审计系统"},
+    {"id": "net_mgmt", "type": "server", "x": 1.0, "y": 4.6, "width": 0.6, "height": 0.4, "label": "网络管理系统"},
+    {"id": "security_ctrl", "type": "server", "x": 1.0, "y": 5.2, "width": 0.6, "height": 0.4, "label": "杀毒软件及统一管控系统"}
+  ],
+  "connections": [
+    {"from": "internet", "to": "firewall1"},
+    {"from": "internet", "to": "firewall2"},
+    {"from": "firewall1", "to": "core_switch1"},
+    {"from": "firewall1", "to": "core_switch2"},
+    {"from": "firewall2", "to": "core_switch1"},
+    {"from": "firewall2", "to": "core_switch2"},
+    {"from": "core_switch1", "to": "access_switch"},
+    {"from": "core_switch2", "to": "access_switch"},
+    {"from": "access_switch", "to": "pc_0"},
+    {"from": "access_switch", "to": "pc_1"},
+    {"from": "access_switch", "to": "pc_2"},
+    {"from": "access_switch", "to": "pc_3"},
+    {"from": "access_switch", "to": "pc_4"},
+    {"from": "core_switch1", "to": "dmz_firewall"},
+    {"from": "dmz_firewall", "to": "web_firewall"},
+    {"from": "web_firewall", "to": "dmz_switch"},
+    {"from": "dmz_switch", "to": "app_server1"},
+    {"from": "dmz_switch", "to": "app_server2"},
+    {"from": "dmz_switch", "to": "app_server3"},
+    {"from": "dmz_switch", "to": "db_server1"},
+    {"from": "dmz_switch", "to": "db_server2"},
+    {"from": "dmz_switch", "to": "db_server3"},
+    {"from": "dmz_switch", "to": "public_server1"},
+    {"from": "dmz_switch", "to": "public_server2"},
+    {"from": "dmz_switch", "to": "public_server3"},
+    {"from": "core_switch1", "to": "sec_firewall"},
+    {"from": "sec_firewall", "to": "sec_switch"},
+    {"from": "sec_switch", "to": "log_audit"},
+    {"from": "sec_switch", "to": "db_audit"},
+    {"from": "sec_switch", "to": "ops_audit"},
+    {"from": "sec_switch", "to": "net_mgmt"},
+    {"from": "sec_switch", "to": "security_ctrl"}
+  ]
+}

@@ -1,0 +1,98 @@
+{
+  "title": "企业网络拓扑图",
+  "description": "典型的企业网络架构，包含总部、分支机构和云端",
+  "zones": [
+    {
+      "id": "cloud_zone",
+      "type": "internet",
+      "title": "云端服务",
+      "x": 0.5,
+      "y": 0.8,
+      "width": 3.5,
+      "height": 2.5
+    },
+    {
+      "id": "hq_zone",
+      "type": "datacenter",
+      "title": "总部数据中心",
+      "x": 4.5,
+      "y": 0.8,
+      "width": 4.5,
+      "height": 4.5
+    },
+    {
+      "id": "branch1_zone",
+      "type": "office",
+      "title": "分支机构 1",
+      "x": 9.5,
+      "y": 0.8,
+      "width": 3.5,
+      "height": 2.0
+    },
+    {
+      "id": "branch2_zone",
+      "type": "office",
+      "title": "分支机构 2",
+      "x": 9.5,
+      "y": 3.2,
+      "width": 3.5,
+      "height": 2.0
+    }
+  ],
+  "devices": [
+    {"id": "internet", "type": "internet", "x": 1.5, "y": 1.2, "width": 0.8, "height": 0.8, "label": "Internet"},
+    {"id": "cloud_lb", "type": "load_balancer", "x": 1.2, "y": 2.3, "width": 0.7, "height": 0.6, "label": "云负载均衡"},
+    {"id": "cloud_app", "type": "server", "x": 2.3, "y": 2.3, "width": 0.6, "height": 0.4, "label": "云服务"},
+    
+    {"id": "hq_router", "type": "router", "x": 5.5, "y": 1.2, "width": 0.8, "height": 0.6, "label": "核心路由器"},
+    {"id": "hq_fw1", "type": "firewall", "x": 4.8, "y": 2.2, "width": 0.6, "height": 0.6, "label": "防火墙"},
+    {"id": "hq_fw2", "type": "firewall", "x": 6.2, "y": 2.2, "width": 0.6, "height": 0.6, "label": "防火墙"},
+    {"id": "hq_core_sw", "type": "switch", "x": 5.5, "y": 3.2, "width": 0.8, "height": 0.5, "label": "核心交换机"},
+    
+    {"id": "hq_app_sw", "type": "switch", "x": 4.8, "y": 4.2, "width": 0.6, "height": 0.4, "label": "应用交换机"},
+    {"id": "hq_db_sw", "type": "switch", "x": 6.2, "y": 4.2, "width": 0.6, "height": 0.4, "label": "数据库交换机"},
+    
+    {"id": "hq_app1", "type": "server", "x": 4.5, "y": 4.8, "width": 0.5, "height": 0.35, "label": "应用服务器"},
+    {"id": "hq_app2", "type": "server", "x": 5.2, "y": 4.8, "width": 0.5, "height": 0.35, "label": "应用服务器"},
+    {"id": "hq_db1", "type": "database", "x": 6.0, "y": 4.8, "width": 0.5, "height": 0.4, "label": "主数据库"},
+    {"id": "hq_db2", "type": "database", "x": 6.7, "y": 4.8, "width": 0.5, "height": 0.4, "label": "备数据库"},
+    
+    {"id": "branch1_router", "type": "router", "x": 10.2, "y": 1.2, "width": 0.7, "height": 0.5, "label": "分支路由器"},
+    {"id": "branch1_sw", "type": "switch", "x": 10.2, "y": 1.9, "width": 0.7, "height": 0.4, "label": "接入交换机"},
+    {"id": "branch1_pc1", "type": "pc", "x": 9.8, "y": 2.4, "width": 0.4, "height": 0.3, "label": "办公 PC"},
+    {"id": "branch1_pc2", "type": "pc", "x": 10.6, "y": 2.4, "width": 0.4, "height": 0.3, "label": "办公 PC"},
+    
+    {"id": "branch2_router", "type": "router", "x": 10.2, "y": 3.6, "width": 0.7, "height": 0.5, "label": "分支路由器"},
+    {"id": "branch2_sw", "type": "switch", "x": 10.2, "y": 4.3, "width": 0.7, "height": 0.4, "label": "接入交换机"},
+    {"id": "branch2_pc1", "type": "pc", "x": 9.8, "y": 4.8, "width": 0.4, "height": 0.3, "label": "办公 PC"},
+    {"id": "branch2_pc2", "type": "pc", "x": 10.6, "y": 4.8, "width": 0.4, "height": 0.3, "label": "办公 PC"}
+  ],
+  "connections": [
+    {"from": "internet", "to": "cloud_lb", "label": "公网"},
+    {"from": "cloud_lb", "to": "cloud_app"},
+    {"from": "cloud_app", "to": "hq_router", "label": "专线", "dashed": true},
+    
+    {"from": "hq_router", "to": "hq_fw1"},
+    {"from": "hq_router", "to": "hq_fw2"},
+    {"from": "hq_fw1", "to": "hq_core_sw"},
+    {"from": "hq_fw2", "to": "hq_core_sw"},
+    
+    {"from": "hq_core_sw", "to": "hq_app_sw"},
+    {"from": "hq_core_sw", "to": "hq_db_sw"},
+    
+    {"from": "hq_app_sw", "to": "hq_app1"},
+    {"from": "hq_app_sw", "to": "hq_app2"},
+    {"from": "hq_db_sw", "to": "hq_db1"},
+    {"from": "hq_db_sw", "to": "hq_db2"},
+    
+    {"from": "hq_router", "to": "branch1_router", "label": "MPLS"},
+    {"from": "branch1_router", "to": "branch1_sw"},
+    {"from": "branch1_sw", "to": "branch1_pc1"},
+    {"from": "branch1_sw", "to": "branch1_pc2"},
+    
+    {"from": "hq_router", "to": "branch2_router", "label": "MPLS"},
+    {"from": "branch2_router", "to": "branch2_sw"},
+    {"from": "branch2_sw", "to": "branch2_pc1"},
+    {"from": "branch2_sw", "to": "branch2_pc2"}
+  ]
+}
