@@ -1,0 +1,74 @@
+{
+  "title": "医院智能客服系统网络拓扑",
+  "description": "医院内部网络架构，包含AI服务器、数据库和安全设备",
+  "zones": [
+    {
+      "id": "internet_zone",
+      "type": "internet",
+      "title": "互联网接入",
+      "x": 0.5,
+      "y": 0.5,
+      "width": 2.5,
+      "height": 2.0
+    },
+    {
+      "id": "dmz_zone",
+      "type": "dmz",
+      "title": "DMZ区",
+      "x": 3.5,
+      "y": 0.5,
+      "width": 3.0,
+      "height": 4.0
+    },
+    {
+      "id": "internal_zone",
+      "type": "datacenter",
+      "title": "内部网络",
+      "x": 7.0,
+      "y": 0.5,
+      "width": 4.0,
+      "height": 4.0
+    },
+    {
+      "id": "ai_zone",
+      "type": "datacenter",
+      "title": "AI计算中心",
+      "x": 11.5,
+      "y": 0.5,
+      "width": 3.0,
+      "height": 2.5
+    }
+  ],
+  "devices": [
+    {"id": "internet", "type": "internet", "x": 1.0, "y": 1.0, "width": 0.8, "height": 0.8, "label": "Internet"},
+    {"id": "external_lb", "type": "load_balancer", "x": 4.0, "y": 1.0, "width": 0.7, "height": 0.6, "label": "外部负载均衡"},
+    {"id": "api_gateway", "type": "server", "x": 4.0, "y": 2.0, "width": 0.6, "height": 0.4, "label": "API网关"},
+    {"id": "waf", "type": "firewall", "x": 5.5, "y": 1.5, "width": 0.6, "height": 0.6, "label": "WAF防火墙"},
+    {"id": "core_router", "type": "router", "x": 7.5, "y": 1.0, "width": 0.8, "height": 0.6, "label": "核心路由器"},
+    {"id": "internal_fw", "type": "firewall", "x": 7.5, "y": 2.0, "width": 0.6, "height": 0.6, "label": "内部防火墙"},
+    {"id": "app_server1", "type": "server", "x": 8.5, "y": 1.5, "width": 0.6, "height": 0.4, "label": "应用服务器1"},
+    {"id": "app_server2", "type": "server", "x": 9.5, "y": 1.5, "width": 0.6, "height": 0.4, "label": "应用服务器2"},
+    {"id": "db_server", "type": "database", "x": 8.5, "y": 2.5, "width": 0.6, "height": 0.4, "label": "数据库服务器"},
+    {"id": "cache_server", "type": "server", "x": 9.5, "y": 2.5, "width": 0.6, "height": 0.4, "label": "缓存服务器"},
+    {"id": "ai_gpu1", "type": "server", "x": 12.0, "y": 1.0, "width": 0.6, "height": 0.4, "label": "AI-GPU1"},
+    {"id": "ai_gpu2", "type": "server", "x": 12.0, "y": 1.8, "width": 0.6, "height": 0.4, "label": "AI-GPU2"},
+    {"id": "model_storage", "type": "database", "x": 13.0, "y": 1.4, "width": 0.6, "height": 0.4, "label": "模型存储"}
+  ],
+  "connections": [
+    {"from": "internet", "to": "external_lb", "label": "HTTPS"},
+    {"from": "external_lb", "to": "api_gateway", "label": "API调用"},
+    {"from": "api_gateway", "to": "waf", "label": "安全过滤"},
+    {"from": "waf", "to": "core_router", "label": "内部路由"},
+    {"from": "core_router", "to": "internal_fw", "label": "访问控制"},
+    {"from": "internal_fw", "to": "app_server1", "label": "应用服务"},
+    {"from": "internal_fw", "to": "app_server2", "label": "应用服务"},
+    {"from": "app_server1", "to": "db_server", "label": "数据库查询"},
+    {"from": "app_server2", "to": "db_server", "label": "数据库查询"},
+    {"from": "app_server1", "to": "cache_server", "label": "缓存读取"},
+    {"from": "app_server2", "to": "cache_server", "label": "缓存读取"},
+    {"from": "internal_fw", "to": "ai_gpu1", "label": "AI推理"},
+    {"from": "internal_fw", "to": "ai_gpu2", "label": "AI推理"},
+    {"from": "ai_gpu1", "to": "model_storage", "label": "模型加载"},
+    {"from": "ai_gpu2", "to": "model_storage", "label": "模型加载"}
+  ]
+}

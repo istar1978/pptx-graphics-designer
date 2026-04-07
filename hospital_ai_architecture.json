@@ -1,0 +1,59 @@
+[
+  {
+    "name": "用户界面层",
+    "color": "access",
+    "bg_color": "bg_access",
+    "items": [
+      {"text": "微信小程序", "subtitle": "患者端"},
+      {"text": "医院APP", "subtitle": "移动端"},
+      {"text": "Web门户", "subtitle": "PC端"},
+      {"text": "语音交互", "subtitle": "电话/语音助手"}
+    ]
+  },
+  {
+    "name": "应用服务层",
+    "color": "service",
+    "bg_color": "bg_service",
+    "items": [
+      {"text": "API网关", "subtitle": "请求路由"},
+      {"text": "认证服务", "subtitle": "用户验证"},
+      {"text": "对话管理", "subtitle": "会话控制"},
+      {"text": "业务逻辑", "subtitle": "医院业务"}
+    ]
+  },
+  {
+    "name": "AI大模型层",
+    "color": "voice",
+    "bg_color": "bg_voice",
+    "items": [
+      {"text": "自然语言处理", "subtitle": "NLP引擎"},
+      {"text": "语音识别", "subtitle": "ASR"},
+      {"text": "语音合成", "subtitle": "TTS"},
+      {"text": "意图识别", "subtitle": "意图分析"},
+      {"text": "知识图谱", "subtitle": "医疗知识库"},
+      {"text": "大语言模型", "subtitle": "GPT/Claude"}
+    ]
+  },
+  {
+    "name": "数据存储层",
+    "color": "data",
+    "bg_color": "bg_data",
+    "items": [
+      {"text": "患者数据库", "subtitle": "HIS系统"},
+      {"text": "医疗知识库", "subtitle": "专业数据库"},
+      {"text": "对话历史", "subtitle": "Redis缓存"},
+      {"text": "模型数据", "subtitle": "训练数据"}
+    ]
+  },
+  {
+    "name": "基础设施层",
+    "color": "infra",
+    "bg_color": "bg_infra",
+    "items": [
+      {"text": "云服务器", "subtitle": "阿里云/AWS"},
+      {"text": "GPU集群", "subtitle": "AI推理"},
+      {"text": "负载均衡", "subtitle": "高可用"},
+      {"text": "监控告警", "subtitle": "系统监控"}
+    ]
+  }
+]
